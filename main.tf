@@ -276,13 +276,22 @@ resource "aws_security_group" "DS_SG_EC" {
 # https://www.youtube.com/watch?v=zTQ1kY8xsY8
 # }
 ///////////////////Memcached////////////////////////////////////////////
-resource "aws_elasticache_cluster" "DS_Memcached" {
-  cluster_id           = "cachedb"
-  engine               = "memcached"
-  node_type            = "cache.m5.large"
-  num_cache_nodes      = 2
-  port                 = 11211
-}
+# resource "aws_elasticache_cluster" "DS_Memcached" {
+#   cluster_id           = "cachedb"
+#   engine               = "memcached"
+#   node_type            = "cache.m5.large"
+#   num_cache_nodes      = 2
+#   port                 = 11211
+# }
 
 
   
+
+resource "aws_s3_bucket" "testing-cicd" {
+  bucket = "my-tf-test-abdi"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
