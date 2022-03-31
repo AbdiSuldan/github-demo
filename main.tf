@@ -73,7 +73,7 @@ resource "aws_route_table_association" "DS_RT_Private_Association_1a" {
 ////////////////////AWS PRIVATE RT ASSOCIATION 2 /////////////////////
 resource "aws_route_table_association" "DS_RT_Private_Association_1-2a" {
   subnet_id     = aws_subnet.DS_Data_Subnet_1.id
-  route_table_id = aws_route_table.DS_PrivateRT_1.id
+  route_table_id = aws_route_table.DS_PrivateRT_1.id 
 }
 
 
