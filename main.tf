@@ -243,30 +243,30 @@ resource "aws_security_group" "DS_SG_EC" {
   }
 }
 //////////////////RDS Subnet group////////////////////////////
-resource "aws_db_subnet_group" "DS_RDS_Subnet_Group" {
-  name       = "database subnets"
-  subnet_ids = [aws_subnet.DS_Data_Subnet_1.id, aws_subnet.DS_Data_Subnet_2.id]
+# resource "aws_db_subnet_group" "DS_RDS_Subnet_Group" {
+#   name       = "database subnets"
+#   subnet_ids = [aws_subnet.DS_Data_Subnet_1.id, aws_subnet.DS_Data_Subnet_2.id]
   
-}
-/////
-resource "aws_rds_cluster_instance" "DS_cluster_instances" {
-  cluster_identifier = aws_rds_cluster.DS_cluster_identifier.id
-  instance_class     = "db.r5.large"
-  engine             = aws_rds_cluster.DS_cluster_identifier.engine
-  engine_version     = aws_rds_cluster.DS_cluster_identifier.engine_version
-}
+# }
+# /////
+# resource "aws_rds_cluster_instance" "DS_cluster_instances" {
+#   cluster_identifier = aws_rds_cluster.DS_cluster_identifier.id
+#   instance_class     = "db.r5.large"
+#   engine             = aws_rds_cluster.DS_cluster_identifier.engine
+#   engine_version     = aws_rds_cluster.DS_cluster_identifier.engine_version
+# }
 
-resource "aws_rds_cluster" "DS_cluster_identifier" {
-  cluster_identifier = "cluster-test"
-  availability_zones = ["us-east-2a", "us-east-2b"]
-  database_name      = "mydb"
-  master_username    = "test123"
-  master_password    = "test12345"
-  engine             = "aurora"
-  engine_version     = "5.6.mysql_aurora.1.22.2"
-  db_subnet_group_name = aws_db_subnet_group.DS_RDS_Subnet_Group.name
+# resource "aws_rds_cluster" "DS_cluster_identifier" {
+#   cluster_identifier = "cluster-test"
+#   availability_zones = ["us-east-2a", "us-east-2b"]
+#   database_name      = "mydb"
+#   master_username    = "test123"
+#   master_password    = "test12345"
+#   engine             = "aurora"
+#   engine_version     = "5.6.mysql_aurora.1.22.2"
+#   db_subnet_group_name = aws_db_subnet_group.DS_RDS_Subnet_Group.name
 
-}
+# }
 # resource "aws_db_cluster_snapshot" "snapshot" {
 #   db_cluster_identifier          = aws_rds_cluster.DS_cluster_identifier.id
 #   db_cluster_snapshot_identifier = "tf-20220330123554207600000001"
